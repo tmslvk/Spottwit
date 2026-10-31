@@ -1,0 +1,6 @@
+@Spottwit.Server_HostAddress = http://localhost:5096
+
+GET {{Spottwit.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

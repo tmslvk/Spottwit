@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36717.8 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "spottwit.client", "spottwit.client\spottwit.client.esproj", "{39DBEDD6-8859-7644-4B15-CE50964202D4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Spottwit.Server", "Spottwit.Server\Spottwit.Server.csproj", "{1CC2FEF7-60C2-45EE-B1DC-72024952406D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{39DBEDD6-8859-7644-4B15-CE50964202D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39DBEDD6-8859-7644-4B15-CE50964202D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39DBEDD6-8859-7644-4B15-CE50964202D4}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{39DBEDD6-8859-7644-4B15-CE50964202D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39DBEDD6-8859-7644-4B15-CE50964202D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39DBEDD6-8859-7644-4B15-CE50964202D4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{1CC2FEF7-60C2-45EE-B1DC-72024952406D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CC2FEF7-60C2-45EE-B1DC-72024952406D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CC2FEF7-60C2-45EE-B1DC-72024952406D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CC2FEF7-60C2-45EE-B1DC-72024952406D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {44FB2F90-FDC9-4D1D-9BA4-FCB17DA06F27}
+	EndGlobalSection
+EndGlobal
