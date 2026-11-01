@@ -1,10 +1,11 @@
-﻿namespace Spottwit.Server.Model
+﻿using Spottwit.Server.Model;
+
+namespace MuslinkReact.Server.Models.Entities
 {
     public class User : BaseEntity
     {
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public string FullName { get; set; } = string.Empty;
+        public string Username { get; set; } = string.Empty;
+        public string Email { get; set; } = string.Empty;
+        public string PasswordHash { get; set; } = string.Empty;
     }
 }
