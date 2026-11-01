@@ -17,10 +17,7 @@ namespace Spottwit.Server.Repositories
 
         private readonly string _cacheKey = $"cache_{typeof(T).Name}_all";
 
-        public Repository(
-            ApplicationDbContext context,
-            ILogger<Repository<T>> logger,
-            IDistributedCache cache)
+        public Repository(ApplicationDbContext context, ILogger<Repository<T>> logger, IDistributedCache cache)
         {
             _context = context;
             _dbSet = context.Set<T>();

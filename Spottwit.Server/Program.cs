@@ -1,7 +1,7 @@
-using Microsoft.EntityFrameworkCore;
-using Spottwit.Server.Data;
-using Spottwit.Server.Extensions;
 using Serilog;
+using Spottwit.Server.Data;
+using MuslinkReact.Server.Extensions;
+using Microsoft.EntityFrameworkCore;
 
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
@@ -11,28 +11,19 @@ Log.Logger = new LoggerConfiguration()
 try
 {
     Log.Information("App Started...");
-    
+
     var builder = WebApplication.CreateBuilder(args);
-    var redisConnectionString = builder.Configuration.GetConnectionString("Redis") ?? "localhost:6380";
+
     builder.Host.UseSerilog((context, services, configuration) => configuration
         .Enrich.FromLogContext()
         .WriteTo.Console()
         .WriteTo.Seq("http://seq:5341"));
 
-    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-    builder.Services.AddDbContext<ApplicationDbContext>(options =>
-        options.UseNpgsql(connectionString));
-
     builder.Services.AddControllers();
-    builder.Services.AddApplicationServices();
-    
-    builder.Services.AddStackExchangeRedisCache(options =>
-    {
-        options.Configuration = redisConnectionString;
-    });
-
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
+
+    builder.Services.InstallServicesFromAssembly(builder.Configuration);
 
     var app = builder.Build();
 
@@ -53,27 +44,16 @@ try
 
     app.UseHttpsRedirection();
 
+    app.UseAuthentication();
     app.UseAuthorization();
 
     app.MapGet("/api/test-log", (ILogger<Program> logger) =>
     {
         logger.LogInformation("Hello! Test log in Seq. Time: {Time}", DateTime.UtcNow);
-        logger.LogWarning("Test Warning (Warning).");
-
-        try
-        {
-            throw new InvalidOperationException("Test exception Seq!");
-        }
-        catch (Exception ex)
-        {
-            logger.LogError(ex, "Test catch Seq.");
-        }
-
         return Results.Ok(new { message = "Logs added!" });
     });
 
     app.MapControllers();
-
     app.MapFallbackToFile("/index.html");
 
     app.Run();

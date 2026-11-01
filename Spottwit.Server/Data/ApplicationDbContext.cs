@@ -12,12 +12,7 @@ namespace Spottwit.Server.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            var entityTypes = Assembly.GetExecutingAssembly()
-                .GetTypes()
-                .Where(t => t.IsClass && !t.IsAbstract && t.IsSubclassOf(typeof(BaseEntity)));
-
-            foreach (var type in entityTypes)
-                modelBuilder.Entity(type);
+            modelBuilder.RegisterAllEntities(Assembly.GetExecutingAssembly());
         }
     }
 }
